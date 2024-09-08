@@ -2,7 +2,71 @@
 
 </div>
 
+## Connection Diagram:
+
+![PCB Schematic](.img/Circuit.png)
+
+* I have used a TSOP IR receiver sensor to copy the data from the remote of the fan, using an Arduino UNO. For the purpose I have used the [Arduino IR Remote](https://github.com/Arduino-IRremote/Arduino-IRremote) library. The usage is fairly simple.
+
+* I used the [ReceiveDump](https://github.com/Arduino-IRremote/Arduino-IRremote/blob/master/examples/ReceiveDump/ReceiveDump.ino) example sketch to dump the data received by TSOP to terminal. Make sure you are using `115200` baud rate and TSOP is connected to `+5V`. 
+
+* Then you can press the button on the remote and you will see the respective data for the button pressed in Arduino console.
+
+A sample data for a button press.
+
+```js
+Protocol=NEC Address=0xF300 Command=0x90 Raw-Data=0x6F90F300 32 bits LSB first
+
+Send with: IrSender.sendNEC(0xF300, 0x90, <numberOfRepeats>);
+
+Raw result in internal ticks (50 us) - with leading gap
+rawData[68]: 
+ -4786
+ +179,-88
+ +12,-11 +12,-10 +12,-11 +11,-11
+ +12,-10 +12,-11 +12,-10 +12,-11
+ +12,-32 +12,-33 +12,-11 +12,-10
+ +12,-32 +13,-32 +12,-32 +13,-32
+ +12,-11 +12,-11 +11,-11 +12,-10
+ +12,-33 +12,-11 +11,-11 +12,-32
+ +13,-32 +12,-32 +13,-32 +13,-32
+ +12,-11 +11,-33 +12,-32 +13,-10
+ +12
+Sum: 1308  . 
+rawData[68]: 
+ -239300
+ +8950,-4400
+ + 600,- 550 + 600,- 500 + 600,- 550 + 550,- 550
+ + 600,- 500 + 600,- 550 + 600,- 500 + 600,- 550
+ + 600,-1600 + 600,-1650 + 600,- 550 + 600,- 500
+ + 600,-1600 + 650,-1600 + 600,-1600 + 650,-1600
+ + 600,- 550 + 600,- 550 + 550,- 550 + 600,- 500
+ + 600,-1650 + 600,- 550 + 550,- 550 + 600,-1600
+ + 600,- 550 + 600,- 550 + 550,- 550 + 600,- 500
+ + 600,- 550 + 550,-1650 + 600,-1600 + 650,- 500
+ + 600
+Sum: 65400
+
+Result as internal 8bit ticks (50 us) array - compensated with MARK_EXCESS_MICROS=20
+uint8_t rawTicks[67] = {179,88, 12,11, 12,10, 12,11, 11,11, 12,10, 12,11, 12,10, 12,11, 12,32, 12,33, 12,11, 12,10, 12,32, 13,32, 12,32, 13,32, 12,11, 12,11, 11,11, 12,10, 12,33, 12,11, 11,11, 12,32, 13,32, 12,32, 13,32, 13,32, 12,11, 11,33, 12,32, 13,10, 12};  // Protocol=NEC Address=0xF300 Command=0x90 Raw-Data=0x6F90F300 32 bits LSB first
+
+Result as microseconds array - compensated with MARK_EXCESS_MICROS=20
+uint16_t rawData[67] = {8930,4420, 580,570, 580,520, 580,570, 530,570, 580,520, 580,570, 580,520, 580,570, 580,1620, 580,1670, 580,570, 580,520, 580,1620, 630,1620, 580,1620, 630,1620, 580,570, 580,570, 530,570, 580,520, 580,1670, 580,570, 530,570, 580,1620, 630,1620, 580,1620, 630,1620, 630,1620, 580,570, 530,1670, 580,1620, 630,520, 580};  // Protocol=NEC Address=0xF300 Command=0x90 Raw-Data=0x6F90F300 32 bits LSB first
+
+uint16_t address = 0xF300;
+uint16_t command = 0x90;
+uint32_t rawData = 0x6F90F300;
+
+
+Pronto Hex as string
+char prontoData[] = "0000 006D 0022 0000 0159 00A8 0018 0014 0018 0012 0018 0014 0016 0014 0018 0012 0018 0014 0018 0012 0018 0014 0018 003D 0018 003F 0018 0014 0018 0012 0018 003D 001A 003D 0018 003D 001A 003D 0018 0014 0018 0014 0016 0014 0018 0012 0018 003F 0018 0014 0016 0014 0018 003D 001A 003D 0018 003D 001A 003D 001A 003D 0018 0014 0016 003F 0018 003D 001A 0012 0018 06C3 ";
+
+```
+
+
 ## Atomberg BLDC Fan Raw Data:
+
+> Below are the `rawData` codes for the buttons in the Atomberg fan, that I have. These codes can then be used with TASMOTA and OpenHAB, to control the fan.
 
 * On/Off Button : 
 
