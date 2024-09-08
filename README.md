@@ -10,6 +10,8 @@
 
 * I used the [ReceiveDump](https://github.com/Arduino-IRremote/Arduino-IRremote/blob/master/examples/ReceiveDump/ReceiveDump.ino) example sketch to dump the data received by TSOP to terminal. Make sure you are using `115200` baud rate and TSOP is connected to `+5V`. 
 
+> Please ensure the TSOP data pin is connected to pin `2` of Arduino UNO.
+
 * Then you can press the button on the remote and you will see the respective data for the button pressed in Arduino console.
 
 A sample data for a button press.
