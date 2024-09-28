@@ -4,7 +4,7 @@
 
 ## Project Enclosure:
 
-![Enclosure](Enclosure/IR_Remote_Box_V2_2024-Sep-28_01-23-33PM-000_CustomizedView16016771484.png)
+![Enclosure](.img/Enclosure.png)
 
 ## Connection Diagram:
 
