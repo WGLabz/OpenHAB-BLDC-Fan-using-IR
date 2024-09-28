@@ -6,6 +6,8 @@
 
 ![Enclosure](.img/Enclosure.png)
 
+[Thingiverse Link](https://www.thingiverse.com/thing:6781125)
+
 ## Connection Diagram:
 
 ![PCB Schematic](.img/Circuit.png)
