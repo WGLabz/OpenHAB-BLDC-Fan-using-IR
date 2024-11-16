@@ -204,3 +204,16 @@ After that create teh 3 transformations below,
   return returnVal;
 })(input)
 ```
+
+### OpenHAB Sitemap
+
+```xml
+sitemap home label="Home" {
+    Frame icon=fan_ceiling label="Fan Control" {
+        Setpoint icon=fan_box item=Fan_Remote_IR_IRSend2 label="Speed" maxValue=6 minValue=1 step=1
+        Switch item=Fan_Remote_OSC label="Oscillation" mappings=["OFF"="TOGGLE"]
+        Switch item=Fan_Remote_OnOff mappings=["OFF"="TOGGLE"]
+    }
+}
+
+```
