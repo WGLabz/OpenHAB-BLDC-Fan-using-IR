@@ -1,5 +1,11 @@
-<div>
-
+## YouTube Videos
+<div style="display: flex; justify-content: space-between;">
+  <a href="https://www.youtube.com/watch?v=LLLSsqom8IQ" target="_blank">
+    <img src="https://img.youtube.com/vi/LLLSsqom8IQ/0.jpg" style="width: 49%;">
+  </a>
+  <a href="https://www.youtube.com/watch?v=VSztTkb7J70" target="_blank" style="margin-right: 10px;">
+    <img src="https://img.youtube.com/vi/VSztTkb7J70/0.jpg" style="width: 49%;">
+  </a>
 </div>
 
 ## Project Enclosure:
